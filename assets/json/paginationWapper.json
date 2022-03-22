@@ -1,0 +1,7 @@
+{
+  "docs" :"$[]Object",
+  "limit": 10,
+  "page": 1,
+  "pages": 30,
+  "total": 300
+}
