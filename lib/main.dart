@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:jinnian_cms_flutter/pages/favorite_page.dart';
+import 'package:jinnian_cms_flutter/pages/forgot_password_page.dart';
 import 'package:jinnian_cms_flutter/pages/login_page.dart';
 import 'package:jinnian_cms_flutter/pages/my_page.dart';
+import 'package:jinnian_cms_flutter/pages/register_page.dart';
 import 'package:jinnian_cms_flutter/pages/user_page.dart';
 
 void main(){
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
        home: LoginPage(),
       routes: <String,WidgetBuilder>{
          "/favorite":(BuildContext context)=>FavoritePage(),
+         "/register":(BuildContext context)=>RegisterPage(),
+         "/forgot_password":(BuildContext context)=>ForgotPasswordPage(),
          "/my":(BuildContext context)=>MyPage(),
          // "/login":(BuildContext context)=>LoginPage(),
          "/user":(BuildContext context)=> UserPage(),

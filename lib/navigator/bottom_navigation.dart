@@ -14,35 +14,25 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int _currentIndex = 0;
 
  List<BottomNavigationBarItem> bottomNavigationBarItems =<BottomNavigationBarItem>[
-   const BottomNavigationBarItem(
-     icon: Icon(
-       Icons.favorite,
-       color: Colors.pink,
-       size: 24.0,
-       semanticLabel: 'Text to announce in accessibility modes',
-     ),
-     label: "收藏"
+   BottomNavigationBarItem(
+     icon:  Image.asset('assets/images/icons/shouye.png',width: 22,height: 22,),
+
+     label: "首页"
    ),
-   const BottomNavigationBarItem(
-       icon: Icon(
-         Icons.people_alt,
-         color: Colors.pink,
-         size: 24.0,
-         semanticLabel: 'Text to announce in accessibility modes',
-       ),
-       label: "用户"
+   BottomNavigationBarItem(
+       icon:  Image.asset('assets/images/icons/jiaoyi.png',width: 22,height: 22,),
+       label: "交易"
    ),
-   const BottomNavigationBarItem(
-       icon: Icon(
-         Icons.perm_identity,
-         color: Colors.pink,
-         size: 24.0,
-         semanticLabel: 'Text to announce in accessibility modes',
-       ),
+   BottomNavigationBarItem(
+     icon:  Image.asset('assets/images/icons/wode-active.png',width: 22,height: 22,),
        label: "我的",
 
    ),
+   BottomNavigationBarItem(
+     icon:  Image.asset('assets/images/icons/wode-active.png',width: 22,height: 22,),
+     label: "登陆",
 
+   ),
  ];
 
 
@@ -60,8 +50,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
          Navigator.pushNamed(context, "/favorite");
        }else if(index == 1){
          Navigator.pushNamed(context, "/user");
-       }else{
+       }else if(index == 2){
          Navigator.pushNamed(context, "/my");
+       }else if(index == 3){
+         Navigator.pushNamed(context, "/");
        }
 
      });
