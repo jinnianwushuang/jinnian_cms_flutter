@@ -1,5 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:jinnian_cms_flutter/widget/action_button.dart';
+import 'package:jinnian_cms_flutter/widget/labeled_input.dart';
+
+import '../widget/small_logo.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,7 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: _MainView(),
       ),
@@ -24,135 +27,83 @@ class _LoginPageState extends State<LoginPage> {
  * 主体结构区域
  */
 class _MainView extends StatelessWidget {
-   _MainView({Key? key}) : super(key: key);
-
-   List<Widget> listViewChildren =<Widget> [
-     _SmallLogo(),
-
-     _UsernameInput(),
-     SizedBox(height: 20,),
-     _PasswordInput(),
-     SizedBox(height: 20,),
-     _LoginButton()
+  _MainView({Key? key}) : super(key: key);
 
 
-   ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(child: Align(
-          alignment: Alignment.center,
-          child: ListView(
-            restorationId: "login",
-            shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 24),
-            children: listViewChildren,
 
-          ),
-        ))
-      ],
-    );
-  }
-}
-
-/**
- * logo 区域
- */
-
-class _SmallLogo extends StatelessWidget {
-  const _SmallLogo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(padding: EdgeInsets.symmetric(vertical: 20),
-    child: SizedBox(
-      width: 100,
-      height: 100,
-      child:  Image.asset('assets/images/k_icon.png'),
-    ),
-    );
-  }
-}
-
-/**
- * 用户名字
- */
-
-class _UsernameInput extends StatelessWidget {
-  const _UsernameInput({Key? key, this.maxWidth = double.infinity }) : super(key: key);
-
- final double maxWidth;
-  @override
-  Widget build(BuildContext context) {
-    return  Align(
-      alignment: Alignment.center,
-      child: Container(
-        constraints: BoxConstraints(maxWidth: maxWidth  ),
-        child: const TextField(
-          obscureText: true,
-          decoration: InputDecoration(
-            labelText: "用户名",
-            border: OutlineInputBorder()
-          ),
-
-        ),
+    List<Widget> listViewChildren = <Widget>[
+      SizedBox(
+        height: 20,
       ),
-    );
-  }
-}
-
-/**
- * 用户密码
- */
-
-class _PasswordInput extends StatelessWidget {
-  const _PasswordInput({Key? key, this.maxWidth = double.infinity }) : super(key: key);
-  final double maxWidth;
-  @override
-  Widget build(BuildContext context) {
-    return  Align(
-      alignment: Alignment.center,
-      child: Container(
-        constraints: BoxConstraints(maxWidth: maxWidth  ),
-        child: const TextField(
-          obscureText: true,
-          decoration: InputDecoration(
-              labelText: "密码",
-              border: OutlineInputBorder()
-          ),
-
-        ),
+      SmallLogo(),
+      SizedBox(
+        height: 20,
       ),
-    );
-  }
-}
+      LabeledInput(label: "账号", hintText: "请输入账号"),
+      LabeledInput(label: "密码", hintText: "请输入密码"),
+      LabeledInput(label: "验证码", hintText: "请输入验证码"),
+      _ForgotPasswordButton(),
 
-class _LoginButton extends StatefulWidget {
-  const _LoginButton({Key? key}) : super(key: key);
-
-  @override
-  State<_LoginButton> createState() => _LoginButtonState();
-}
-
-class _LoginButtonState extends State<_LoginButton> {
-  @override
-  Widget build(BuildContext context) {
-    return      OutlinedButton(
-        onPressed: (){
-          Navigator.pushNamed(context, "/user");
+      ActionButton(
+        label: "登录",
+        bgcolor: ActionButtonColor.blue,
+        onTapFn: (){
+          Navigator.pushNamed(context, "/home");
         },
+      ),
 
-        child: SizedBox(
-          width: 200,
-          height: 44,
-          child: Center(
-            child: Text("登录"),
-          ),
-        )
+      ActionButton(
+          label: "注册账号",
+          bgcolor: ActionButtonColor.white,
+          onTapFn:(){
+            Navigator.pushNamed(context, "/register");
+          }
+      ),
+      SizedBox(
+        height: 30,
+      ),
+    ];
+
+    return Container(
+      color: Color.fromRGBO(246, 246, 246, 1),
+      child: ListView(
+        children: listViewChildren,
+      ),
     );
   }
 }
 
+/**
+ * 忘记密码
+ */
+class _ForgotPasswordButton extends StatelessWidget {
+  const _ForgotPasswordButton({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10, left: 26, right: 26, bottom: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: () {
+
+
+              Navigator.pushNamed(context, "/forgot_password");
+              // Navigator.pushNamed(context, "/register");
+            },
+            child: Text(
+              "忘记密码？",
+              style: TextStyle(
+                  color: Color.fromRGBO(250, 100, 0, 1), fontSize: 12),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

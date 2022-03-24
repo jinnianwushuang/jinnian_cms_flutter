@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^4.0.4
   reactive_forms: ^11.0.1
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/
+    - assets/images/icons/
+    - assets/images/logo/
+    - assets/images/tanke/
     - assets/json/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -6,7 +6,7 @@ class DioRequest {
 
     dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
       // Do something before request is sent
-      options.baseUrl = "http://192.168.220.1:7001";
+      options.baseUrl = "http://172.21.165.161:7001";
       return handler.next(options); //continue
       // If you want to resolve the request with some custom data，
       // you can resolve a `Response` object eg: `handler.resolve(response)`.
