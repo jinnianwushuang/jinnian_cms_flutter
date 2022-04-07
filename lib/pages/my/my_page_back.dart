@@ -104,7 +104,7 @@ class _MyPageState extends State<MyPage> {
         ),
       ),
       bottomNavigationBar: BottomNavigation(
-        currentIndex: 2,
+        currentIndex: 4,
       ),
     );
   }
